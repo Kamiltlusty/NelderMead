@@ -6,7 +6,8 @@ import java.util.*;
 
 public class NelderMead {
     public Map<Integer, List<Point>> runExperiment(Point x0, double step, EvalFunc ef,
-                                                   double alpha, double beta, double gamma, double delta, int maxIter, double eps) {
+                                                   double alpha, double beta, double gamma, double delta,
+                                                   int maxIter, double eps) {
         x0.evaluate(ef);
         int counter = 0;
 
