@@ -55,7 +55,7 @@ public class Main {
             pythonCmd = "python3"; // Linux / macOS
         }
 
-        File pythonScript = extractPythonScript("hello.py");
+        File pythonScript = extractPythonScript("visualization.py");
         ProcessBuilder pb = new ProcessBuilder(
                 pythonCmd,
                 pythonScript.getAbsolutePath()
