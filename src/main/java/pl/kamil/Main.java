@@ -2,6 +2,7 @@ package pl.kamil;
 
 import pl.kamil.eval_func.EvalFunc;
 import pl.kamil.eval_func.Sphere;
+import pl.kamil.eval_func.Rosenbrock;
 import tools.jackson.databind.ObjectMapper;
 
 import java.io.*;
@@ -12,6 +13,7 @@ public class Main {
         var scanner = new Scanner(System.in);
         var nm = new NelderMead();
         EvalFunc ef = new Sphere();
+        //EvalFunc ef = new Rosenbrock();
         double alfa = 1.0;
         double beta = 0.5;
         double gamma = 2;
@@ -41,9 +43,14 @@ public class Main {
             lf.add(new FigureDTO(lp));
         }
 
+        String functionName = ef.getClass().getSimpleName().toLowerCase();
+        // np. "sphere" zamiast "Sphere"
+
+        ExperimentResult result = new ExperimentResult(functionName, lf);
+
         ObjectMapper om = new ObjectMapper();
         om.writerWithDefaultPrettyPrinter()
-                .writeValue(new File("figures.json"), lf);
+                .writeValue(new File("figures.json"), result);
     }
 
     public static void createVisualization() throws IOException, InterruptedException {
